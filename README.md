@@ -1,79 +1,130 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Agroghala - Farm | Store | Sell
 
-# Getting Started
+## Console documentation
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+The Agroghala `console` is based on the `console.py` file.
+Meant for users who would like to interract with Agroghala on the `CLI`. The console is written in python and is based on the `models` that can be accessed in the `models folder`.
 
-## Step 1: Start the Metro Server
+The models include:
+1. BaseModel (BaseModel where all the other models will inherit from)
+    Fields:
+        - id (Created using uuid4)
+        - created_at (Datetime field defaults to current time when the appropriate model is created)
+        - updated_at (Datetime field that updates whenever the appropriate model is updated)
+    Methods:
+        - `__str__()` that returns the formal string representation of the class
+        - `to_dict()` that returns the dictionary representation of the class
+        - `save()` that creates and saves a new instance of the class
+        - `delete()` that deletes an instance of the class from the storage engine selected
+2. User
+    Fields:
+        - first_name
+        - last_name
+        - email
+        - password
+    Methods:
+        - encrypt_password (Encrypts password using `HS256` algorithm and stores it in the appropriate storage engine selected in `models/engines`)
+        - verify_password (Decrypts the Password and will be used during login)
+3. Token
+    Fields:
+        - user_id
+        - access_token
+        - refresh_token
+    Methods:
+        - `create_token()` Creates an access and refresh token for the user whose user_id is specified
+4. Profile
+    Fields:
+        - phone_number
+        - location
+        - user_id      
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+**The rest of the Models can be accessed in the `models` folder with their appropriate documentation**
 
-To start Metro, run the following command from the _root_ of your React Native project:
+*To interact with the Console:*
+Install the required dependencies using
+- `pip install -r requirements.txt` in Windows Powershell
+- `pip3 install -r requirements.txt` in WSL Ubuntu or Any Linux based system
 
-```bash
-# using npm
-npm start
+**This is for `Python3` users**
 
-# OR using Yarn
-yarn start
-```
+Run the following Command to spin up the console:
+- `python .\console.py` on Windows Powershel and you should get the following
+`D:\projects\agroghala> python .\console.py`
+`(agroghala)`
+- `./console.py` on WSL or any Linux based System and you should get the following
+`robert@servedsk:~/agroghala$ ./console.py` 
+`(agroghala)`
 
-## Step 2: Start your Application
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+🥳 Congratulations! You just Spun up your Console!!
 
-### For Android
 
-```bash
-# using npm
-npm run android
+Now for the Commands:
+    - `help <cmd>` lists the documentation on any command available in the console. If you omit the <cmd> then it wil list all avilable commands by default. Here is an example
 
-# OR using Yarn
-yarn android
-```
+    `(agroghala) help
 
-### For iOS
+    Documented commands (type help <topic>):
+    ========================================
+    EOF  all  create  destroy  exit  help  show  update
 
-```bash
-# using npm
-npm run ios
+    (agroghala) help create
+    Creates a new instance of a class
+            usage: create <class_name> <param1> <param2> <param3>...`
 
-# OR using Yarn
-yarn ios
-```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+    - `create` Creates an instance of a specified class. Here is an example: (The parameters are optional)
+        `(agroghala) create User first_name="Robert" last_name="Odhiambo" email="odhiz@gmail.com" password="odhizpwd" 
+        19edacb5-2ffb-42be-b1c8-3b82986a1cef`
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+    - `all` Lists all object in the storage engine. Here is an example usage:
+        `(agroghala) all
+        [[User] (19edacb5-2ffb-42be-b1c8-3b82986a1cef) {'first_name': 'Robert', 'last_name': 'Odhiambo', 'email': 'odhiz@gmail.com', 'password': '$2b$12$0Y3N2hsVe0xOOq59Dewxv.pnWC9.PlAMvR0G32.G7EDKejiJ/f5Nu', 'id': '19edacb5-2ffb-42be-b1c8-3b82986a1cef', 'updated_at': datetime.datetime(2024, 2, 23, 14, 43, 10, 948012)}, [Blog] (263665b6-b2d0-4e53-9387-9c73ec39413f) {'title': 'Agroghala', 'author': '19edacb5-2ffb-42be-b1c8-3b82986a1cef', 'id': '263665b6-b2d0-4e53-9387-9c73ec39413f', 'updated_at': datetime.datetime(2024, 2, 23, 15, 5, 33, 465632)}]
+        (agroghala) all Blog
+        [[Blog] (263665b6-b2d0-4e53-9387-9c73ec39413f) {'title': 'Agroghala', 'author': '19edacb5-2ffb-42be-b1c8-3b82986a1cef', 'id': '263665b6-b2d0-4e53-9387-9c73ec39413f', 'updated_at': datetime.datetime(2024, 2, 23, 15, 5, 33, 465632)}]`
 
-## Step 3: Modifying your App
+    - `destroy` Deletes an instance of the specified class and id. Here is an example:
+        `(agroghala) all Blog
+        [[Blog] (263665b6-b2d0-4e53-9387-9c73ec39413f) {'title': 'Agroghala', 'author': '19edacb5-2ffb-42be-b1c8-3b82986a1cef', 'id': '263665b6-b2d0-4e53-9387-9c73ec39413f', 'updated_at': datetime.datetime(2024, 2, 23, 15, 5, 33, 465632)}]
+        (agroghala) destroy Blog 263665b6-b2d0-4e53-9387-9c73ec39413f
+        (agroghala) all Blog
+        []`
 
-Now that you have successfully run the app, let's modify it.
+    - `show` Selects an instance of the class whose id is specified. Here is an example:
+        `(agroghala) show Blog 472bc445-41cb-4762-b7e9-19fb661efaf7
+        [Blog] (472bc445-41cb-4762-b7e9-19fb661efaf7) {'title': 'Agroghala', 'author': '19edacb5-2ffb-42be-b1c8-3b82986a1cef', 'id': '472bc445-41cb-4762-b7e9-19fb661efaf7', 'updated_at': datetime.datetime(2024, 2, 23, 15, 8, 4, 495243)}
+        (agroghala)`
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+    - `update` Updates a parameter for a Class whose id is specified, Here is an example:
+        `(agroghala) update Blog 472bc445-41cb-4762-b7e9-19fb661efaf7 title "Ag_ghala - Cool name" 
+        (agroghala) show Blog 472bc445-41cb-4762-b7e9-19fb661efaf7
+        [Blog] (472bc445-41cb-4762-b7e9-19fb661efaf7) {'title': 'Ag_ghala - Cool name', 'author': '19edacb5-2ffb-42be-b1c8-3b82986a1cef', 'id': '472bc445-41cb-4762-b7e9-19fb661efaf7', 'updated_at': datetime.datetime(2024, 2, 23, 15, 15, 47, 388529)}`
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+    - `exit` Exits the Console. Example usage:
+        `(agroghala) exit
+        Bye`
 
-## Congratulations! :tada:
+🥳 Congratulations! You just finished your first Tutorial.
 
-You've successfully run and modified your React Native App. :partying_face:
+**Remember that using gthis will Create a `file.json` at the root of your directory where you spun up you console from. Do not be shocked to see this new File**
+We are currently using File storage.  But what about YOU, yes YOU who loves DATABASES. 
+You will find a file named `setup_agroghala_dev.sql`at the root of your agroghala directory. First ensure you have every dependency installed above using `pip install -r requirements.txt`. You do not need to repeat this process if your console worked well. Open the `setup_agroghala_dev.sql` file and set a password for your `ag_dev` user where you will get the `######`. 
 
-### Now what?
+Once done you can run the following command in your cli to create the database and users in your MySQL Server.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+`cat 'setup_agroghala_dev.sql' | mysql -uroot -p`
 
-# Troubleshooting
+If this works without an error then you have successfully created the database and user. You can try this command to confirm all this.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+`mysql -uag_dev -p<your password for this user>` then in your mysql server `SHOW DATABASES;` and check if `agroghala_dev_db` is in the list of databases.
 
-# Learn More
+If all this is okay. You have successfully setup your Database and can start working with it. Exit the shell and let's spin up the console using the database. Unfortunately I have only documented the parts that follow for users using WSL or any Linusx based system.
 
-To learn more about React Native, take a look at the following resources:
+Run the following command to spin up the console but this time using Database_storage
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+`AG_MYSQL_USER=ag_dev AG_MYSQL_PWD=<your_user_password> AG_MYSQL_HOST=localhost AG_MYSQL_DB=agroghala_dev_db AG_TYPE_STORAGE=db ./console.py`
+
+*Remember to change <your_user_password> to the correct password*
+
+You can now interract with the console now using the DATABASE. Interesting right!! No file.json, open your database and `USE agroghala_dev_db`. You can then select from each table and see your created instances.
+    

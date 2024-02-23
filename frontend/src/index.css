@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    padding-top: 1rem;
+}
+.home {
+    border-radius: 0;
+    width: 100%;
+}
+.homepage {
+    margin-top: 0px;
+    height: 600px;
+    overflow: hidden;
+}
+.card {
+    width: 425px;
+}
+
+.card h2 {
+    color: #008000;
+}
+.card legend {
+    text-align: flex-start;
+    padding-bottom: 0.25rem;
+}
+.card a {
+    cursor: pointer;
+}
+
+nav h3 {
+    margin-left: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: rgba(0, 128, 0, 0.75);
+}
+.hero-image {
+    border-radius: 0%;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.hero-image div {
+    border-radius: 0%;
+    text-align: center;
+    background: linear-gradient(to left, rgba(0, 0, 0, 3),rgba(0, 0, 0, 0));
+}
+
+nav {
+    background-color: #ffffff;
+    padding-top: 1rem;
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+nav ul {
+    display: flex;
+}
+nav li {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+nav li:hover {
+    color: rgba(0, 128, 0, 0.75);
+    border-bottom: 3px solid #008000;
+    border-radius: 0px;
+}
+
+.card button {
+   /* background-color: rgba(0, 128, 0, 0.75);;*/
+    width: 100%;
+}
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #0d9a1b; 
+  }
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #0d9a1b; ;
+  }
+ 
+
+  input[type="email"]:focus {
+    outline: none;
+  box-shadow: 0 0 0 1px #0d9a1b; 
+  }
+  input[type="password"]:focus {
+    outline: none;
+  box-shadow: 0 0 0 1px #0d9a1b; 
+  }
+  .navbar-style {
+
+  }
+  /* Customize the scrollbar track */
+  textarea::-webkit-scrollbar {
+    width: 10px; /* Set scrollbar width */
+  }
+
+  textarea::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Set the background color of the scrollbar track */
+  }
+
+  /* Customize the scrollbar handle (thumb) */
+  textarea::-webkit-scrollbar-thumb {
+    background-color: #008000; /* Set the color of the scrollbar handle */
+    border-radius: 4px; /* Add border radius to make it rounded */
+  }
+
+  /* Customize the scrollbar handle when hovering over it */
+  textarea::-webkit-scrollbar-thumb:hover {
+    background-color: #008000; /* Set the color of the scrollbar handle on hover */
+  }
+  /* Customize the scrollbar track */
+  body::-webkit-scrollbar {
+    width: 8px; /* Set scrollbar width */
+  }
+
+  body::-webkit-scrollbar-track {
+    background-color: transparent; /* Set the background color of the scrollbar track */
+  }
+
+  /* Customize the scrollbar handle (thumb) */
+  body::-webkit-scrollbar-thumb {
+    background-color: #008000; /* Set the color of the scrollbar handle */
+    border-radius: 4px; /* Add border radius to make it rounded */
+  }
+
+  /* Customize the scrollbar handle when hovering over it */
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: #008000; /* Set the color of the scrollbar handle on hover */
+  }
+
+  @media (max-width: 768px) {
+    .contain {
+        display: flex;
+        justify-content: flex-start;
+    }
+    body {
+        padding: auto;
+    }
+    .phone {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    .navbar-style {
+        display: none;
+        margin-bottom: 1rem;
+    }
+    .menu-icon {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.5rem;
+    }
+  }
+  .expanded {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+  }
+  .ghala p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+  }
+  .ghala {
+    transition: transform 0.3s, background-color 0.3s;
+  }
+
+  .ghala:hover {
+    transform: scale(1.02); /* Increase the scale value to zoom in more */
+  }
+  .menu-icon {
+    display: none;
+  }
+
+  .footer {
+    border-top-left-radius: 50% 100px;
+    border-top-right-radius: 50% 100px;
+  }
+ .classical {
+    width: 1000px;
+    height: auto;
+ }
+.home-buttons {
+    width: 10rem;
+}
+.rent-buttons {
+    width: 6rem;
+}
+.renting {
+    border-radius: 0;
+}
+.scrollable-content {
+    max-height: 300px; /* Set the maximum height for the scrollable content */
+    overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+  }
+
+  .popup {
+    width: 600px;
+  }

@@ -1,0 +1,210 @@
+body {
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #008000;
+    color: white;
+    margin: 0;
+}
+
+nav {
+    font-family: UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
+    display: flex;
+    justify-content: space-between; /* Aligns items to the start, space between, and end */
+    padding-bottom: 12px;
+    padding-top: 12px;
+    border-bottom-width: 0;
+    border-bottom-style: solid;
+    border-bottom-color: #E2E2E2;
+    position: relative;
+    z-index: 2002;
+    height: 64px;
+    box-sizing: border-box;
+    padding-left: 20px; /* Added left padding for the title */
+    padding-right: 20px; /* Added right padding for the second ul */
+    top: 0;
+    transition-duration: 300ms;
+    -webkit-transition-property: top;
+    -moz-transition-property: top;
+    transition-property: top;
+}
+
+nav .logo {
+    color: #FFFFFF;
+    font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 112px;
+    -webkit-transition-property: backgroundSize;
+    -moz-transition-property: backgroundSize;
+    transition-property: backgroundSize;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    text-decoration: none;
+    text-underline-position: under;
+    will-change: background-size;
+    background-size: 0% 100%, 100% 100%;
+    background-repeat: no-repeat;
+    background-image: none;
+    top: 0;
+    display: flex;
+    align-items: center; /* Center the title vertically */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul:first-child {
+    justify-content: center; /* Center the first ul */
+}
+
+nav ul:last-child {
+    justify-content: flex-end; /* Align the second ul to the right */
+}
+
+nav li {
+    margin: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding: 1rem;
+    position: relative;
+}
+
+/* nav li:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    animation: underline 0.3s forwards;
+} */
+
+@keyframes underline {
+    from {
+        transform-origin: bottom left;
+        transform: scaleX(0);
+    }
+    to {
+        transform-origin: bottom right;
+        transform: scaleX(1);
+    }
+}
+
+nav .menu {
+    display: none;
+}
+
+.signup:hover {
+    transform: scale(1.1); /* Zoom in effect on hover for SignUp */
+}
+
+.login:hover {
+    background-color: rgba(14, 228, 6, 0.8); /* Increase opacity for Login */
+}
+
+.signup {
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-width: 0px;
+    border-style: none;
+    outline: none;
+    box-shadow: none;
+    text-decoration: none;
+    appearance: none;
+    transition-property: background;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+    cursor: pointer;
+    margin: 0px;
+    font-family: UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 30px;
+    padding: 10px 12px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    white-space: nowrap;
+
+}
+
+.login {
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-width: 0px;
+    border-style: none;
+    outline: none;
+    box-shadow: none;
+    text-decoration: none;
+    appearance: none;
+    transition-property: background;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+    cursor: pointer;
+    margin: 0px;
+    font-family: UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 30px;
+    padding: 10px 12px;
+    color: rgb(255, 255, 255);
+    background-color: #008000;
+    white-space: nowrap;
+}
+
+/* Media query for tablet devices (adjust max-width as needed) */
+@media (max-width: 768px) {
+    nav ul:first-child {
+        display: none; /* Hide the first ul on tablet and mobile devices */
+    }
+
+    nav ul:last-child {
+        order: -1; /* Move the second ul to the first position */
+    }
+
+    nav .menu-button {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 20px; /* Add spacing between SignUp and menu button */
+    }
+
+    nav .menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    nav .menu li {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    nav .menu-button:hover + .menu {
+        display: flex; /* Show the menu when the menu button is hovered */
+    }
+}
